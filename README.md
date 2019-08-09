@@ -1,29 +1,16 @@
-# array-replace-problem-in-vue-v-for
+# demo项目复现问题流程
 
-## Project setup
-```
-npm install
-```
+1. git clone 或者 下载zip
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+2. 在项目根目录下执行`npm install`
 
-### Compiles and minifies for production
+3. 执行`npm run serve`
+
+4. 点击首页的`change fatherItems by concat`按钮
+
+然后问题发生, 在children.vue中的v-for
 ```
-npm run build
+<p v-for="item in childItems" :key="item.id">{{item.content}}</p>
 ```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+不会主动刷新, 即使childItems已经更新(使用模板语法`{{childItems}}`事先窥探了数据是否更新)
